@@ -21,8 +21,8 @@ def add_data():
     response = db.insert(name,email,password)
 
     if response:
-        return "Registration Successful"
+        return render_template('login.html',message="Registration successful, Kindly login now!!")
     else:
-        return "email already exit"
+        return render_template('login.html',message="email already exit")
 
 app.run(debug = True)

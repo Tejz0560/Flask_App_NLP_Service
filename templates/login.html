@@ -12,6 +12,10 @@
         <div class="screen">
             <div class="screen__content">
                 <h1>NLP App</h1>
+
+                {% if message %}
+                  <p style="color: green;">{{message}}</p>
+                {% endif %}
                 <form class="login">
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
