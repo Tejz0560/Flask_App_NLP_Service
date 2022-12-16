@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect
 from db import Database
 
 db = Database()
@@ -33,9 +33,22 @@ def perform_login():
     response = db.search(email,password)
 
     if response:
-        return "welcome"
+        return redirect('/profile')
     else:
-        return "Incorrect Email/Password"
+        return render_template('login.html',message = "Incorrect Email/Password")
     
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/ner')
+def ner():
+    return render_template('ner.html')
+
+@app.route('/perform_ner',methods=['post'])
+def perform_ner():
+    text = request.form.get('ner_text')
+    
+    return 'ner'
 
 app.run(debug = True)
