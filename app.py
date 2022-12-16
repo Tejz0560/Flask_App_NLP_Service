@@ -25,4 +25,8 @@ def add_data():
     else:
         return render_template('login.html',message="email already exit")
 
+@app.route('/perform_login',methods=['post'])
+def perform_login():
+    return "Login done"
+
 app.run(debug = True)
