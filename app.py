@@ -27,6 +27,15 @@ def add_data():
 
 @app.route('/perform_login',methods=['post'])
 def perform_login():
-    return "Login done"
+
+    email = request.form.get('U_email')
+    password = request.form.get('U_password')
+    response = db.search(email,password)
+
+    if response:
+        return "welcome"
+    else:
+        return "Incorrect Email/Password"
+    
 
 app.run(debug = True)
